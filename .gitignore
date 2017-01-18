@@ -5,6 +5,7 @@ auth.js
 .log
 src/config.js
 src/config.production.js
+public/user/*
 
 *~
 *.sw[mnpcod]
