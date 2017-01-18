@@ -1,0 +1,46 @@
+{% extends "layout.njk" %}
+
+
+
+<!-- Page Header -->
+{% block header %}
+        
+        <!-- Set your background image for this header on the line below. -->
+        <!-- Here we can add a custom image in the future -->
+        <header class="intro-header" style="background-image: url('/assets/img/home-bg.jpg')">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="site-heading">
+                            <h1>{{post.title | capitalize }}</h1>
+                            <hr class="small">
+                            <span class="subheading">{{post.subtitle }}</span>
+                            <span class="subheading">{{post.date}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+{% endblock %}
+
+
+<!-- Main Content -->
+{% block content %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="col-lg-9  col-md-7 ">
+                        {% if post %}
+                            {% include "_partial/post-full.njk" %}
+                        {% else %}
+                            <p>No post at this location</p>
+                        {% endif %}
+                        
+                    </div>
+                     <div class="col-lg-3  col-md-4 index-left-column ">
+                            {% include "_partial/index-left-column.njk" %}
+                    </div>          
+                </div>
+            </div>
+        </div>
+ {% endblock %}

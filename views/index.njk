@@ -1,0 +1,27 @@
+{% extends "layout.njk" %}
+
+
+
+<!-- Main Content -->
+{% block content %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+                   
+                    <div class="col-lg-9  col-md-7 ">
+
+                        {% for post in posts %}
+                            {% include "_partial/post-index.njk" %}
+
+                        {% else %}
+                            <p>No more posts</p>
+                        {% endfor %}
+                            {% include "_partial/pagination.njk" %}
+                    </div>
+                     <div class="col-lg-3  col-md-4 index-left-column ">
+                            {% include "_partial/index-left-column.njk" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+ {% endblock %}

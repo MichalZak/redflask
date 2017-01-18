@@ -1,0 +1,15 @@
+<div class="post-full">
+        <h3 class="post-title">
+            {{post.title | capitalize }}
+        </h3>
+    
+    <span class="post-meta">
+        <!-- Date and Author -->
+        {% if item.author  %}
+            Posted by {{post.author}} on
+        {% endif %}
+        {{ post.date }}
+    </span>
+    <div>{{post.body}}</div>
+</div>
+

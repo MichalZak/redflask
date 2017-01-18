@@ -1,0 +1,23 @@
+<div class="post-preview">
+    <a href="post/{{post.url}}">
+        <h3 class="post-title">
+            {{post.title | capitalize }}
+        </h3>
+        {% if post.subtitle %}
+            <h4 class="post-subtitle">
+                {{ post.subtitle }}
+            </h4>
+        {% endif %}
+    </a>
+    <p class="post-meta">
+        <!-- Date and Author -->
+        {% if item.author  %}
+            Posted by {{post.author}} on
+        {% endif %}
+        {{ post.date }}
+    </p>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo">{{post.body}}</div>
+</div>
+<hr>
+ 
