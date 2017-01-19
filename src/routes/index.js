@@ -25,9 +25,9 @@ redflask.info(function(err,body){
 const db = new(cradle.Connection)(config.redflask.host, {
     cache: false,
     raw: true,
-    auth: { username: 'mike', password: 'pass' }
+    auth: { username: config.redflask.user, password: config.redflask.password }
 
-}).database('redflask$test');
+}).database(config.redflask.database);
 
 
 //run our setup
