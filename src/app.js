@@ -24,6 +24,7 @@ if (process.env.NODE_ENV == 'production')
 else
     var config = require('./config');
 
+console.log("Config contents: ", config)
 var superlogin = new SuperLogin(config);
 app.use('/auth', superlogin.router);
 
