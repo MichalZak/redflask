@@ -24,8 +24,8 @@ redflask.info(function(err,body){
 
 const db = new(cradle.Connection)(config.redflask.host, {
     cache: false,
-    raw: true,
-    auth: { username: config.redflask.user, password: config.redflask.password }
+    raw: false,
+    auth: { username: config.redflask.username, password: config.redflask.password }
 
 }).database(config.redflask.database);
 
@@ -36,6 +36,7 @@ const setup = require('../setup/redflask_setup');
 setup.createCouchViews(db);
 
 
+
 //show our index
 router.get('/', (req, res, next)=>{
     console.log("Loading index view");
@@ -43,19 +44,22 @@ router.get('/', (req, res, next)=>{
         if(err)
         {
             console.log('error loading posts: ', err);
-            next();
-        }
-         
-        console.log("Index Posts: ", posts.rows.map(row=>row.value));
-        console.log("Index Posts: ", posts);
-
-
-        res.render('index.njk', {
+            //TODO: need to have error page show up here 404
+             res.render('404.njk', {
                 title:  "MZLabs",
-                posts: posts.rows.map(row=>row.value),
-                count: posts.total_rows,
-                offset: posts.offset 
-        });  
+                err: err, 
+            });  
+        }
+        else 
+        {
+            console.log("Index Posts: ", posts);
+            res.render('index.njk', {
+                    title:  "MZLabs",
+                    posts: posts.rows.map(row=>row.value),
+                    count: posts.total_rows,
+                    offset: posts.offset 
+            });  
+        }
         
     }) 
 });//end of index
