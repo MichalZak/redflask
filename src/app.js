@@ -31,6 +31,7 @@ app.use('/auth', superlogin.router);
 
 //setup view folder
 app.set('views', path.join(__dirname, '../views')); 
+console.log('VIEWS', path.join(__dirname, '../views'))
 
 // set the view engine to nunjucks
 nunjucks.configure('views', {
